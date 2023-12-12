@@ -10,33 +10,27 @@ function SignupPage() {
         password: "",
     });
     const navigate = useNavigate();
-    function handleInputChange (change) {
+    function handleInputChange(change) {
         setFormData({
             ...formData,
             [change.target.name]: change.target.value,
         });
-    };
+    }
 
-    async function handleRegister  ()  {
+    async function handleRegister() {
         try {
             localStorage.removeItem("jwt");
             localStorage.removeItem("userId");
-            const registerResponse = await Axios.post(
-                `${url}/api/register`,
-                {
-                    username: formData.username,
-                    password: formData.password,
-                },
-            );
+            const registerResponse = await Axios.post(`${url}/api/register`, {
+                username: formData.username,
+                password: formData.password,
+            });
             console.log("Server response (sign up):", registerResponse.data);
 
-            const loginResponse = await Axios.post(
-                `${url}/api/login`,
-                {
-                    username: formData.username,
-                    password: formData.password,
-                },
-            );
+            const loginResponse = await Axios.post(`${url}/api/login`, {
+                username: formData.username,
+                password: formData.password,
+            });
             console.log("Server response (login):", loginResponse.data);
             localStorage.setItem("jwt", loginResponse.data.token);
             localStorage.setItem("userId", loginResponse.data.userId);
@@ -44,7 +38,7 @@ function SignupPage() {
         } catch (error) {
             console.error(`Sign up failed: ${error}`);
         }
-    };
+    }
 
     return (
         <div className="container">
@@ -79,11 +73,7 @@ function SignupPage() {
 
                 <div className="row"></div>
 
-                <button
-                    type="button"
-                    className="btn"
-                    onClick={handleRegister}
-                >
+                <button type="button" className="btn" onClick={handleRegister}>
                     Register
                 </button>
 

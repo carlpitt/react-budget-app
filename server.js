@@ -3,8 +3,9 @@ import compression from "compression";
 import { createConnection } from "mysql2";
 import cors from "cors";
 import { sign } from "jsonwebtoken";
-import { hash, compare } from "bcrypt";
-import { json } from "body-parser";
+import { hash, compare } from "bcryptjs";
+import bodyParser from "body-parser";
+const { json } = bodyParser;
 
 const port = process.env.port || 5000;
 const secret = "hush";
@@ -65,9 +66,9 @@ app.post("/createBudget", (req, res) => {
 
 app.post("/api/signup", (req, res) => {
     const { username, password } = req.body;
-    // console.log("old pass " + password);
+    // console.log(`old password ${password}`);
     hash(password, 10, (err, hashedPassword) => {
-        // console.log("new pass " + hashedPassword);
+        // console.log(`new password ${hashedPassword}`);
         if (err) {
             console.error(err);
             return res.status(500).json({ error: "Password hash failed" });
@@ -191,8 +192,6 @@ app.delete("/delete/:userId/:budgetId", (req, res) => {
     );
 });
 
-// for updating entries
-// work on now
 app.put("/updateBudget/:userId/:budgetId", async (req, res) => {
     const toUpdate = req.params.budgetId;
     const userId = req.params.userId;
@@ -207,7 +206,7 @@ app.put("/updateBudget/:userId/:budgetId", async (req, res) => {
             userId,
             toUpdate,
         ],
-        (error, results) => {
+        (error) => {
             if (error) {
                 console.error("Error updating data:", error);
                 res.status(500).send("Error updating data");

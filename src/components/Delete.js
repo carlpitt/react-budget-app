@@ -13,9 +13,7 @@ function Delete() {
         console.log(`Attempt to delete budgetId: ${budgetId}`);
         const deleteBudget = async () => {
             try {
-                await Axios.delete(
-                    `${url}/delete/${userId}/${budgetId}`,
-                );
+                await Axios.delete(`${url}/delete/${userId}/${budgetId}`);
                 console.log("Budget item is deleted: ");
                 navigate("/dashboard");
             } catch (error) {

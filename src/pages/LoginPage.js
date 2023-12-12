@@ -18,13 +18,10 @@ function LoginPage() {
     }
     async function handleLogin() {
         try {
-            const response = await Axios.post(
-                `${url}/api/login`,
-                {
-                    username: formData.username,
-                    password: formData.password,
-                },
-            );
+            const response = await Axios.post(`${url}/api/login`, {
+                username: formData.username,
+                password: formData.password,
+            });
 
             console.log("Server response:", response.data);
 

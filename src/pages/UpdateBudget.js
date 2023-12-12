@@ -27,14 +27,11 @@ function UpdateBudget() {
         try {
             console.log("Submitting form...");
 
-            const response = await Axios.post(
-                `${url}/createBudget`,
-                {
-                    ...formData,
-                    // put userId in request body
-                    userId,
-                },
-            );
+            const response = await Axios.post(`${url}/createBudget`, {
+                ...formData,
+                // put userId in request body
+                userId,
+            });
             navigate("/dashboard");
             console.log("Server response:", response.data);
             console.log(response.data);
