@@ -3,7 +3,7 @@ import compression from "compression";
 import { createConnection } from "mysql2";
 import cors from "cors";
 import { sign } from "jsonwebtoken";
-import { hash, compare } from "bcryptjs";
+import { hash, compare } from "bcrypt";
 import { json } from "body-parser";
 
 const port = process.env.port || 5000;
