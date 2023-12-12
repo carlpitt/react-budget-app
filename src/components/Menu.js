@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 function Menu() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container px-5">
+        <nav className="navbar">
+            <div className="container">
                 <Link to="/" className="navbar-brand" href="#!">
                     Personal Budget
                 </Link>
@@ -23,7 +23,7 @@ function Menu() {
                     className="collapse navbar-collapse"
                     id="navbarSupportedContent"
                 >
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
                                 Home
