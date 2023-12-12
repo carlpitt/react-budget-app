@@ -1,12 +1,19 @@
-import express from "express";
-import compression from "compression";
-import { createConnection } from "mysql2";
-import cors from "cors";
-import jsonWebToken from "jsonwebtoken";
-const { sign } = jsonWebToken;
-import { hash, compare } from "bcrypt";
-import bodyParser from "body-parser";
-const { json } = bodyParser;
+// import express from "express";
+// import compression from "compression";
+// import { createConnection } from "mysql2";
+// import cors from "cors";
+// import jsonWebToken from "jsonwebtoken";
+// const { sign } = jsonWebToken;
+// import { hash, compare } from "bcrypt";
+// import bodyParser from "body-parser";
+// const { json } = bodyParser;
+const express = require("express");
+const compression = require("compression");
+const { createConnection } = require("mysql2");
+const cors = require("cors");
+const { sign } = require("jsonwebtoken");
+const { hash, compare } = require("bcrypt");
+const { json } = require("body-parser");
 
 const port = process.env.port || 5000;
 const secret = "hush";
