@@ -3,7 +3,7 @@ import compression from "compression";
 import { createConnection } from "mysql2";
 import cors from "cors";
 import { sign } from "jsonwebtoken";
-import { hash, compare } from "bcryptjs";
+import { hash, compare } from "bcrypt";
 import bodyParser from "body-parser";
 const { json } = bodyParser;
 
